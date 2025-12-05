@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhesa Ardhi • Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    /* --- Base Styling --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --accent: #00eaff;
+      --accent-glow: 0 0 15px rgba(0, 234, 255, 0.6);
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 400;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      padding-top: 150px;
+      padding-bottom: 120px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0.7;
+    }
+
+    /* Floating Glow Element */
+    .glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: 0.3;
+      transform: translateX(-50%);
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -10px); }
+      50% { transform: translate(-50%, 10px); }
+    }
+
+    /* --- Section Styling --- */
+    section {
+      padding: 90px 10%;
+    }
+    h3.section-title {
+      font-size: 2.2rem;
+      margin-bottom: 35px;
+      text-align: center;
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
+    }
+
+    /* --- Skills --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .skill-card {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+
+    /* --- Projects --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .project-card {
+      background: #1a1a1a;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      transition: 0.35s;
+    }
+    .project-card:hover {
+      transform: scale(1.03);
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+    .project-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+    .project-card .content {
+      padding: 20px;
+    }
+
+    /* --- Contact --- */
+    .contact a {
+      color: var(--accent);
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.4rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 50px;
+      opacity: 0.5;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glow"></div>
+
+  <!-- NAVBAR -->
+  <header>
+    <h1>Dhesa Ardhi</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Hi, I'm <span style="color:var(--accent);">Dhesa Ardhi</span></h2>
+    <p>AI Practitioner • Software Documentation Specialist • Product & Data Enthusiast  
+    <br> Passionate about building smart, efficient, and human-centered digital solutions.</p>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h3 class="section-title">About Me</h3>
+    <p style="max-width:800px; margin:auto; text-align:center; opacity:.8;">
+      I love creating meaningful solutions through Artificial Intelligence, product thinking, and clean engineering 
+      documentation. Experienced in building ML pipelines, computer vision systems, dashboards, and writing 
+      high-quality tech documents (API Docs, PRD, FSD, etc.).
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h3 class="section-title">Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-card">Machine Learning</div>
+      <div class="skill-card">Deep Learning</div>
+      <div class="skill-card">Computer Vision</div>
+      <div class="skill-card">Technical Writing</div>
+      <div class="skill-card">Product Documentation</div>
+      <div class="skill-card">Python / Laravel / PHP</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h3 class="section-title">Projects</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://picsum.photos/600/300?random=1"/>
+        <div class="content">
+          <h4>Signature Detection (AI)</h4>
+          <p>Deep learning project for detecting signatures on documents using Faster R-CNN.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://picsum.photos/600/300?random=2"/>
+        <div class="content">
+          <h4>Recommendation System</h4>
+          <p>Neural Collaborative Filtering for personalized movie recommendations.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://picsum.photos/600/300?random=3"/>
+        <div class="content">
+          <h4>Dashboard Monitoring</h4>
+          <p>Realtime data dashboard with multi-database architecture for monitoring operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h3 class="section-title">Contact</h3>
+    <div class="contact" style="text-align:center; margin-top:20px;">
+      <a href="mailto:your@email.com"><i data-feather="mail"></i></a>
+      <a href="https://github.com/dhesaardhi"><i data-feather="github"></i></a>
+      <a href="https://linkedin.com"><i data-feather="linkedin"></i></a>
+    </div>
+  </section>
+
+  <footer>© 2025 Dhesa Ardhi — Crafted with ❤️ using GitHub Pages</footer>
+
+  <script>
+    feather.replace();
+  </script>
+
+</body>
+</html>
