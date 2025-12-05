@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dhesa Ardhi • Portfolio</title>
 
+  <!-- SEO & META -->
+  <meta name="description" content="Portfolio of Dhesa Ardhi — AI practitioner, documentation specialist, and product & data enthusiast.">
+  <meta name="author" content="Dhesa Ardhi" />
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Dhesa Ardhi • Portfolio">
+  <meta property="og:description" content="AI practitioner & documentation specialist building human-centered digital solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dhesaardhi.github.io/">
+  <!-- Ganti ini dengan URL gambar kamu kalau sudah punya -->
+  <meta property="og:image" content="https://picsum.photos/1200/630?random=9">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dhesa Ardhi • Portfolio">
+  <meta name="twitter:description" content="AI practitioner, documentation specialist, and product & data enthusiast.">
+
+  <!-- Favicon (opsional, nanti bisa ganti) -->
+  <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
@@ -12,87 +33,260 @@
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
+    /* --- CSS VARIABLE THEMES --- */
+    :root {
+      --bg: #0f0f0f;
+      --bg-alt: #1a1a1a;
+      --text: #e5e5e5;
+      --muted: #aaaaaa;
+      --accent: #00eaff;
+      --accent-glow: 0 0 15px rgba(0, 234, 255, 0.6);
+      --border: rgba(255,255,255,0.08);
+      --nav-bg: rgba(15, 15, 15, 0.85);
+      --card-radius: 14px;
+    }
+
+    body[data-theme="light"] {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-glow: 0 0 15px rgba(37, 99, 235, 0.4);
+      --border: rgba(15,23,42,0.08);
+      --nav-bg: rgba(255,255,255,0.9);
+    }
+
     /* --- Base Styling --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Poppins", sans-serif;
-      background: #0f0f0f;
-      color: #e5e5e5;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
       scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    :root {
-      --accent: #00eaff;
-      --accent-glow: 0 0 15px rgba(0, 234, 255, 0.6);
-    }
+    a { color: inherit; }
 
     header {
       width: 100%;
       position: fixed;
       top: 0;
       left: 0;
-      background: rgba(15, 15, 15, 0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
-      padding: 18px 5%;
+      padding: 14px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     header h1 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: var(--accent);
       text-shadow: var(--accent-glow);
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     nav a {
-      margin-left: 20px;
-      color: #ddd;
+      margin-left: 18px;
+      color: var(--text);
       text-decoration: none;
       font-weight: 400;
+      font-size: 0.95rem;
+      opacity: 0.85;
       transition: 0.3s;
+      white-space: nowrap;
     }
     nav a:hover {
       color: var(--accent);
       text-shadow: var(--accent-glow);
+      opacity: 1;
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+    .theme-toggle span {
+      margin-left: 6px;
+      font-size: 0.8rem;
+      opacity: 0.8;
     }
 
     /* --- Hero Section --- */
     .hero {
-      padding-top: 150px;
-      padding-bottom: 120px;
-      text-align: center;
-      max-width: 900px;
+      padding-top: 130px;
+      padding-bottom: 80px;
+      max-width: 1100px;
       margin: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 40px;
+      align-items: center;
     }
-    .hero h2 {
-      font-size: 3rem;
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h2 {
+      font-size: 2.8rem;
       margin-bottom: 15px;
       font-weight: 700;
     }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-      opacity: 0.7;
+    .hero-text p {
+      font-size: 1.05rem;
+      max-width: 600px;
+      opacity: 0.8;
+    }
+
+    .hero-badges {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-primary, .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      box-shadow: var(--accent-glow);
+      border-color: transparent;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+
+    .hero-photo-card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      padding: 20px 20px 24px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(0,234,255,0.25), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .hero-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      margin: 8px auto 14px;
+      border: 2px solid var(--accent);
+      box-shadow: var(--accent-glow);
+      overflow: hidden;
+    }
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-photo-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .hero-photo-card p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .hero-tag {
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      opacity: 0.85;
+      background: rgba(0,0,0,0.1);
     }
 
     /* Floating Glow Element */
     .glow {
-      position: absolute;
-      top: 20%;
+      position: fixed;
+      top: 15%;
       left: 50%;
       width: 400px;
       height: 400px;
       background: var(--accent);
       filter: blur(150px);
-      opacity: 0.3;
+      opacity: 0.25;
       transform: translateX(-50%);
       animation: float 6s infinite ease-in-out;
+      pointer-events: none;
+      z-index: -1;
     }
     @keyframes float {
       0%, 100% { transform: translate(-50%, -10px); }
@@ -101,14 +295,41 @@
 
     /* --- Section Styling --- */
     section {
-      padding: 90px 10%;
+      padding: 70px 10%;
     }
     h3.section-title {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       margin-bottom: 35px;
       text-align: center;
       color: var(--accent);
       text-shadow: var(--accent-glow);
+    }
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: -20px auto 35px;
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    /* --- Reveal Animation --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- About --- */
+    .about-text {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      opacity: 0.85;
+      font-size: 0.98rem;
     }
 
     /* --- Skills --- */
@@ -118,153 +339,561 @@
       gap: 25px;
     }
     .skill-card {
-      background: #1a1a1a;
+      background: var(--bg-alt);
       padding: 25px;
-      border-radius: 14px;
+      border-radius: var(--card-radius);
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
       transition: 0.3s;
+      font-size: 0.95rem;
     }
     .skill-card:hover {
       transform: translateY(-5px);
       border-color: var(--accent);
       box-shadow: var(--accent-glow);
     }
+    .skill-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .skill-list {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
 
     /* --- Projects --- */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
     .project-card {
-      background: #1a1a1a;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
       overflow: hidden;
       transition: 0.35s;
+      display: flex;
+      flex-direction: column;
     }
     .project-card:hover {
-      transform: scale(1.03);
+      transform: translateY(-4px);
       border-color: var(--accent);
       box-shadow: var(--accent-glow);
     }
     .project-card img {
       width: 100%;
-      height: 190px;
+      height: 180px;
       object-fit: cover;
     }
     .project-card .content {
-      padding: 20px;
+      padding: 18px 20px 20px;
+      flex: 1;
+    }
+    .project-card h4 {
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+    .project-meta {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      margin-bottom: 8px;
+    }
+
+    /* ===== Timeline Section ===== */
+    .timeline {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      padding-left: 40px;
+      border-left: 2px solid var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .timeline {
+        padding-left: 24px;
+      }
+    }
+
+    .timeline-item {
+      margin-bottom: 45px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -9px;
+      top: 5px;
+      box-shadow: var(--accent-glow);
+    }
+
+    .timeline-content {
+      background: var(--bg-alt);
+      padding: 20px 22px;
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      transition: .3s;
+    }
+
+    .timeline-content:hover {
+      transform: translateX(4px);
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 6px;
+    }
+
+    .timeline-duration {
+      opacity: .7;
+      font-size: .85rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline-desc ul {
+      padding-left: 18px;
+      line-height: 1.7;
+      opacity: .9;
+      font-size: 0.9rem;
+    }
+
+    /* --- Blog Section --- */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .blog-card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      padding: 18px 20px 20px;
+      transition: 0.3s;
+    }
+    .blog-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+    .blog-tag {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .blog-card h4 {
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+    .blog-meta {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .blog-card p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+    .blog-read {
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
     }
 
     /* --- Contact --- */
+    .contact {
+      text-align: center;
+      margin-top: 20px;
+    }
     .contact a {
       color: var(--accent);
       margin: 0 10px;
       text-decoration: none;
       font-size: 1.4rem;
+      opacity: 0.9;
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      opacity: 1;
+      text-shadow: var(--accent-glow);
+      transform: translateY(-1px);
     }
 
     footer {
       text-align: center;
       padding: 40px 0;
-      margin-top: 50px;
-      opacity: 0.5;
-      font-size: 0.9rem;
+      margin-top: 30px;
+      opacity: 0.6;
+      font-size: 0.85rem;
+    }
+
+    /* Small devices */
+    @media (max-width: 480px) {
+      header {
+        padding-inline: 4%;
+      }
+      nav a {
+        display: none; /* biar simpel di HP, nanti bisa dibuat burger kalau mau */
+      }
     }
   </style>
 </head>
 
-<body>
+<body data-theme="dark">
 
   <div class="glow"></div>
 
   <!-- NAVBAR -->
   <header>
     <h1>Dhesa Ardhi</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-right">
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i data-feather="moon"></i>
+        <span>Theme</span>
+      </button>
+    </div>
   </header>
 
   <!-- HERO -->
-  <div class="hero">
-    <h2>Hi, I'm <span style="color:var(--accent);">Dhesa Ardhi</span></h2>
-    <p>AI Practitioner • Software Documentation Specialist • Product & Data Enthusiast  
-    <br> Passionate about building smart, efficient, and human-centered digital solutions.</p>
-  </div>
+  <section class="hero">
+    <div class="hero-text reveal">
+      <h2>Hi, I'm <span style="color:var(--accent);">Dhesa Ardhi</span></h2>
+      <p>
+        AI Practitioner • Software Documentation Specialist • Product & Data Enthusiast.  
+        Passionate about building smart, efficient, and human-centered digital solutions in public sector and industry.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge">Pranata Komputer Ahli Pertama</div>
+        <div class="badge">Ministry of Industry</div>
+        <div class="badge">Based in Jakarta</div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          <i data-feather="grid"></i> View Projects
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <i data-feather="send"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-card reveal">
+      <div class="hero-avatar">
+        <!-- Ganti src ini dengan foto asli kamu -->
+        <img src="https://picsum.photos/400/400?random=8" alt="Profile photo of Dhesa Ardhi">
+      </div>
+      <h3>Dhesa Ardhi</h3>
+      <p>AI • Data • Documentation • SPBE</p>
+      <div class="hero-tags">
+        <div class="hero-tag">SPBE & GovTech</div>
+        <div class="hero-tag">Data Visualization</div>
+        <div class="hero-tag">API & System Docs</div>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="reveal">
     <h3 class="section-title">About Me</h3>
-    <p style="max-width:800px; margin:auto; text-align:center; opacity:.8;">
+    <p class="section-subtitle">
+      Blending AI, system design, and clear technical documentation to make complex systems understandable and actionable.
+    </p>
+    <p class="about-text">
       I love creating meaningful solutions through Artificial Intelligence, product thinking, and clean engineering 
       documentation. Experienced in building ML pipelines, computer vision systems, dashboards, and writing 
-      high-quality tech documents (API Docs, PRD, FSD, etc.).
+      high-quality tech documents (API Docs, PRD, FSD, TSD, user guides, and more).
+      <br><br>
+      Currently serving as <strong>Pranata Komputer Ahli Pertama</strong> at the Ministry of Industry, I contribute to 
+      SPBE architecture, data integration, and digital service monitoring in collaboration with various government units.
     </p>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
+  <section id="skills" class="reveal">
     <h3 class="section-title">Skills</h3>
+    <p class="section-subtitle">
+      A mix of technical depth and communication clarity — from building models to explaining them to non-technical stakeholders.
+    </p>
     <div class="skills-grid">
-      <div class="skill-card">Machine Learning</div>
-      <div class="skill-card">Deep Learning</div>
-      <div class="skill-card">Computer Vision</div>
-      <div class="skill-card">Technical Writing</div>
-      <div class="skill-card">Product Documentation</div>
-      <div class="skill-card">Python / Laravel / PHP</div>
+      <div class="skill-card">
+        <div class="skill-title">Machine Learning & AI</div>
+        <div class="skill-list">
+          Classification, NLP, recommendation systems, model evaluation, MLOps basics.
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Deep Learning & CV</div>
+        <div class="skill-list">
+          CNNs, Faster R-CNN, transfer learning, document understanding, image preprocessing.
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Data & Visualization</div>
+        <div class="skill-list">
+          Dashboards, reporting, monitoring KPIs, storytelling with data for stakeholders.
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Technical Writing</div>
+        <div class="skill-list">
+          API Docs, PRD, BRD, FSD, TSD, SoR, MoM, user guides, and knowledge base content.
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Product & Systems</div>
+        <div class="skill-list">
+          Requirement analysis, SPBE alignment, cross-team collaboration, change management.
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Tech Stack</div>
+        <div class="skill-list">
+          Python, PHP / Laravel, JS basics, SQL, Git, GitHub, Moodle, dashboards & APIs.
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
+  <section id="projects" class="reveal">
     <h3 class="section-title">Projects</h3>
+    <p class="section-subtitle">
+      Selected works from AI, recommendation systems, and digital service monitoring.
+    </p>
     <div class="projects-grid">
       <div class="project-card">
-        <img src="https://picsum.photos/600/300?random=1"/>
+        <img src="https://picsum.photos/600/300?random=1" alt="Signature Detection Project"/>
         <div class="content">
           <h4>Signature Detection (AI)</h4>
-          <p>Deep learning project for detecting signatures on documents using Faster R-CNN.</p>
+          <div class="project-meta">Computer Vision • Faster R-CNN</div>
+          <p>Deep learning project for detecting signatures on document images, including challenging cases with stamps and seals.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="https://picsum.photos/600/300?random=2"/>
+        <img src="https://picsum.photos/600/300?random=2" alt="Recommendation System Project"/>
         <div class="content">
-          <h4>Recommendation System</h4>
-          <p>Neural Collaborative Filtering for personalized movie recommendations.</p>
+          <h4>Neural Movie Recommender</h4>
+          <div class="project-meta">Recommender System • Neural CF</div>
+          <p>Neural Collaborative Filtering model that generates personalized movie recommendations based on user-item interactions.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="https://picsum.photos/600/300?random=3"/>
+        <img src="https://picsum.photos/600/300?random=3" alt="Dashboard Monitoring Project"/>
         <div class="content">
-          <h4>Dashboard Monitoring</h4>
-          <p>Realtime data dashboard with multi-database architecture for monitoring operations.</p>
+          <h4>Operational Monitoring Dashboard</h4>
+          <div class="project-meta">Data Visualization • Multi-DB</div>
+          <p>Realtime monitoring dashboard with multi-database architecture to track submissions, approvals, and service performance.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience" class="reveal">
+    <h3 class="section-title">Experience</h3>
+    <p class="section-subtitle">
+      Journey across education, product, and government digital services — focusing on impact, clarity, and collaboration.
+    </p>
+
+    <div class="timeline">
+
+      <!-- ITEM: Current Role -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+          <div class="timeline-title">Pranata Komputer Ahli Pertama</div>
+          <div class="timeline-org">Ministry of Industry (Kementerian Perindustrian)</div>
+          <div class="timeline-duration">Jun 2025 – Present • Jakarta, Indonesia · On-site</div>
+
+          <div class="timeline-desc">
+            <ul>
+              <li>Reviewed and redesigned SPBE architecture to improve system efficiency and service integration.</li>
+              <li>Developed and maintained dashboards for project progress, regulatory compliance, and system performance.</li>
+              <li>Managed integration and monitoring of one-service systems to ensure operational continuity and data accuracy.</li>
+              <li>Aligned data integration processes with regional service units for integrated system development.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM: Example Previous Experience (silakan edit sesuai riwayatmu) -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+          <div class="timeline-title">Program & Digital Learning Specialist</div>
+          <div class="timeline-org">Education / Training Sector</div>
+          <div class="timeline-duration">2022 – 2024 • Hybrid</div>
+
+          <div class="timeline-desc">
+            <ul>
+              <li>Designed and managed nation-wide teacher training programs using self-regulated learning via LMS.</li>
+              <li>Coordinated content development, reported insights to management, and supported digital learning adoption.</li>
+              <li>Collaborated with government offices and vendors to roll out digital learning solutions at scale.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM: Example Earlier Role -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+          <div class="timeline-title">IT Trainer & E-learning Administrator</div>
+          <div class="timeline-org">Education Institution</div>
+          <div class="timeline-duration">Earlier Role • On-site</div>
+
+          <div class="timeline-desc">
+            <ul>
+              <li>Trained teachers and students to adopt new applications and e-learning platforms.</li>
+              <li>Developed and maintained a local website for school services, announcements, and uniform ordering.</li>
+              <li>Administered and customized Moodle-based e-learning to support digital classroom activities.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOG SECTION -->
+  <section id="blog" class="reveal">
+    <h3 class="section-title">Blog & Notes</h3>
+    <p class="section-subtitle">
+      Short write-ups on AI, SPBE, documentation, and lessons learned from projects.
+      (You can later link these cards to real posts or another platform.)
+    </p>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-tag">AI & Public Sector</div>
+        <h4>Designing AI Systems for Government Services</h4>
+        <div class="blog-meta">Draft · 5 min read</div>
+        <p>Reflections on how AI can augment—not replace—public services, with a focus on trust, transparency, and usability.</p>
+        <a href="#" class="blog-read">Read more <i data-feather="arrow-right"></i></a>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-tag">Documentation</div>
+        <h4>From PRD to API Docs: Connecting the Dots</h4>
+        <div class="blog-meta">Draft · 7 min read</div>
+        <p>Thoughts on creating documentation that is consistent across BRD, PRD, FSD, TSD, and API references.</p>
+        <a href="#" class="blog-read">Read more <i data-feather="arrow-right"></i></a>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-tag">SPBE & Integration</div>
+        <h4>Lessons from Integrating One-Service Systems</h4>
+        <div class="blog-meta">Draft · 6 min read</div>
+        <p>Key takeaways from integrating multiple services and data sources into a unified SPBE-aligned architecture.</p>
+        <a href="#" class="blog-read">Read more <i data-feather="arrow-right"></i></a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="reveal">
     <h3 class="section-title">Contact</h3>
-    <div class="contact" style="text-align:center; margin-top:20px;">
-      <a href="mailto:your@email.com"><i data-feather="mail"></i></a>
-      <a href="https://github.com/dhesaardhi"><i data-feather="github"></i></a>
-      <a href="https://linkedin.com"><i data-feather="linkedin"></i></a>
+    <p class="section-subtitle">
+      Open for collaboration, discussions on AI & SPBE, or just a friendly chat.
+    </p>
+    <div class="contact">
+      <a href="mailto:your@email.com" title="Email"><i data-feather="mail"></i></a>
+      <a href="https://github.com/dhesaardhi" target="_blank" rel="noreferrer" title="GitHub"><i data-feather="github"></i></a>
+      <a href="https://linkedin.com" target="_blank" rel="noreferrer" title="LinkedIn"><i data-feather="linkedin"></i></a>
     </div>
   </section>
 
   <footer>© 2025 Dhesa Ardhi — Crafted with ❤️ using GitHub Pages</footer>
 
   <script>
+    // Feather icons
     feather.replace();
+
+    // THEME TOGGLE
+    const body = document.body;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    function setTheme(theme) {
+      body.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const icon = theme === 'dark' ? 'moon' : 'sun';
+      themeToggle.innerHTML = `<i data-feather="${icon}"></i><span>Theme</span>`;
+      feather.replace();
+    }
+
+    // Initial theme from localStorage or prefers-color-scheme
+    (function initTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark' || stored === 'light') {
+        setTheme(stored);
+      } else {
+        const prefersDark = window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
+    })();
+
+    themeToggle.addEventListener('click', () => {
+      const current = body.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // REVEAL ON SCROLL
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealElements.forEach(el => observer.observe(el));
   </script>
 
 </body>
